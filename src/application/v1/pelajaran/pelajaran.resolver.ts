@@ -28,4 +28,11 @@ export class PelajaranResolver {
     return this.pelajaranService.find(id)
   }
 
+  @Query(returns => Boolean)
+  async deletePelajaran(
+    @Args('id') id : number
+  ){
+    return await this.pelajaranService.delete(id)
+  }
+
 }

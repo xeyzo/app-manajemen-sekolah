@@ -23,4 +23,10 @@ export class PelajaranService{
     return await this.pelajaranRepo.find()
   }
 
+  public async delete(id:number){
+    const data = await this.pelajaranRepo.delete(id)
+    
+    return true
+  }
+
 }
