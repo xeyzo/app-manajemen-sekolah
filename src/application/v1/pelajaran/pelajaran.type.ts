@@ -12,7 +12,7 @@ export class PelajaranArgs extends MasterArgs{
 };
 
 @InputType()
-export class PelajaranPayload extends MasterPayload{
+export class CreatePelajaranPayload extends MasterPayload{
   
   @Field(type => String, { nullable: false })
   name: string;

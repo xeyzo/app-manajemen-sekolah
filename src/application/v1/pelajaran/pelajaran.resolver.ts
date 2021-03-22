@@ -1,7 +1,7 @@
 import { Resolver, Query, Mutation, Args } from "@nestjs/graphql";
 import { PelajaranEntity } from "src/entities/pelajaran.entity";
 import { PelajaranService } from "./pelajaran.sevice";
-import { PelajaranArgs, PelajaranPayload } from "./pelajaran.type";
+import { PelajaranArgs, CreatePelajaranPayload } from "./pelajaran.type";
 
 @Resolver(of => PelajaranEntity)
 export class PelajaranResolver {
@@ -9,19 +9,14 @@ export class PelajaranResolver {
     private readonly pelajaranService: PelajaranService
   ){}
 
-  @Query(returns => PelajaranEntity)
+  @Query(returns => [PelajaranEntity])
   async getAllPelajaran(){
-        return{
-            id: 1,
-            name: 'udin',
-            createdAt: 'rabu',
-            updateAt: 'rabu'
-        }
+        return await this.pelajaranService.getAll()
     };
 
   @Mutation(returns => PelajaranEntity)  
   async createPelajaran(
-    @Args('payload') payload : PelajaranPayload
+    @Args('payload') payload : CreatePelajaranPayload
   ){
     return await this.pelajaranService.create(payload)
   }
