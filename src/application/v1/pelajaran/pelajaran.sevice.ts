@@ -1,7 +1,7 @@
 import { InjectRepository } from "@nestjs/typeorm";
 import { PelajaranEntity } from "src/entities/pelajaran.entity";
 import { Repository } from "typeorm";
-import { CreatePelajaranPayload } from "./pelajaran.type";
+import { CreatePelajaranPayload, UpdatePelajaranPayload } from "./pelajaran.type";
 
 export class PelajaranService{
     constructor(
@@ -28,5 +28,14 @@ export class PelajaranService{
     
     return true
   }
+
+  public async update(id: number, data: UpdatePelajaranPayload){
+    const hasil = await this.pelajaranRepo.findOne(id)
+
+    // const updateData = await this.pelajaranRepo.update(id,{ ...data })
+    
+    // return await this.pelajaranRepo.save(updateData)
+  }
+  
 
 }

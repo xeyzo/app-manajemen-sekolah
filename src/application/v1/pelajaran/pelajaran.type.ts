@@ -18,3 +18,11 @@ export class CreatePelajaranPayload extends MasterPayload{
   name: string;
 
 }
+
+@InputType()
+export class UpdatePelajaranPayload extends MasterPayload{
+  
+  @Field(type => String, { nullable: false })
+  name: string;
+
+}
