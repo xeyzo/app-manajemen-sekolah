@@ -29,9 +29,11 @@ export class PelajaranService{
     return true
   }
 
-  public async update(id: number, pelajaran: UpdatePelajaranPayload){
-    const hasil = await this.pelajaranRepo.findOne(id)
-  
+  public async update(payload: UpdatePelajaranPayload, show: any){
+    return await this.pelajaranRepo.save({
+      ...show,
+      ...payload
+    })
   }
   
 
