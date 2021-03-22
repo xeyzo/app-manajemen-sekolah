@@ -9,7 +9,7 @@ export class PelajaranResolver {
     private readonly pelajaranService: PelajaranService
   ){}
 
-  @Query(returns => PelajaranArgs)
+  @Query(returns => PelajaranEntity)
   async getAllPelajaran(){
         return{
             id: 1,
@@ -19,11 +19,18 @@ export class PelajaranResolver {
         }
     };
 
-  @Mutation(returns => PelajaranArgs)  
+  @Mutation(returns => PelajaranEntity)  
   async createPelajaran(
     @Args('payload') payload : PelajaranPayload
   ){
     return await this.pelajaranService.create(payload)
+  }
+
+  @Query(returns => PelajaranEntity)
+  async getPelajaran(
+    @Args('id') id : number
+  ){
+    return this.pelajaranService.find(id)
   }
 
 }

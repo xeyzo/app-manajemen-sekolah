@@ -14,4 +14,9 @@ export class PelajaranService{
    return await this.pelajaranRepo.save(data)
   }
 
+  public async find(id:number){
+    const data = await this.pelajaranRepo.findOne(id)
+    return data
+  }
+
 }
