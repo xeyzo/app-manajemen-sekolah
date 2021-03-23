@@ -1,4 +1,5 @@
 import { Field, InputType, ObjectType } from "@nestjs/graphql";
+import { IsOptional } from "class-validator";
 import { MasterArgs, MasterPayload } from "src/infrastructure/type/master.type";
 import { Column } from "typeorm";
 
@@ -22,7 +23,8 @@ export class CreatePelajaranPayload extends MasterPayload{
 @InputType()
 export class UpdatePelajaranPayload extends MasterPayload{
   
-  @Field(type => String, { nullable: false })
+  @IsOptional()
+  @Field(type => String, { nullable: true })
   name: string;
 
 }

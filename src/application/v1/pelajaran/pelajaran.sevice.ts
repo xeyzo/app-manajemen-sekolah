@@ -15,8 +15,7 @@ export class PelajaranService{
   }
 
   public async find(id:number){
-    const data = await this.pelajaranRepo.findOne(id)
-    return data
+    return await this.pelajaranRepo.findOne(id)
   }
 
   public async getAll(): Promise<PelajaranEntity[]>{

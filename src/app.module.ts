@@ -3,6 +3,7 @@ import { ApplicationModule } from './application/application.module';
 import { GraphQLModule } from '@nestjs/graphql'
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { PelajaranEntity } from './entities/pelajaran.entity';
+import { SiswaEntity } from './entities/siswa.entity';
 
 
 @Module({
@@ -15,7 +16,7 @@ import { PelajaranEntity } from './entities/pelajaran.entity';
       password: 'admin',
       database: 'latihan',
       entities: [
-        PelajaranEntity
+        PelajaranEntity, SiswaEntity
       ],
       synchronize: true
     }),
