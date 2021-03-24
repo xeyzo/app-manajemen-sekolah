@@ -11,7 +11,7 @@ export class PelajaranResolver {
 
   @Query(returns => [PelajaranEntity])
   async getAllPelajaran(){
-        return await this.pelajaranService.getAll()
+      return await this.pelajaranService.getAll()
     };
 
   @Mutation(returns => PelajaranEntity)  
