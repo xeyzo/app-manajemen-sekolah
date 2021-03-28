@@ -1,9 +1,8 @@
 import { Field, InputType } from "@nestjs/graphql";
 import { IsOptional } from "class-validator";
-import { MasterPayload } from "src/infrastructure/type/master.type";
 
 @InputType()
-export class CreateGuruPayload extends MasterPayload{
+export class CreateGuruPayload{
   @Field(type => String, {nullable : false})
   nama:string;
 
@@ -15,7 +14,7 @@ export class CreateGuruPayload extends MasterPayload{
 }
 
 @InputType()
-export class UpdateGuruPayload extends MasterPayload{
+export class UpdateGuruPayload{
   @IsOptional()
   @Field(type => String, {nullable : false})
   nama:string;

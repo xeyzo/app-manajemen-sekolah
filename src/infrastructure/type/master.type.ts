@@ -17,14 +17,3 @@ export class MasterArgs{
   updatedAt: string
     
 };
-
-@InputType()
-export class MasterPayload{
-
-  @Field(type => String, { nullable : true})
-  createdAt: string
-
-  @Field(type => String, { nullable : true})
-  updatedAt: string
-
-};

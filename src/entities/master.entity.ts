@@ -1,5 +1,5 @@
 import { Field, ID, ObjectType } from "@nestjs/graphql"
-import { Column, Entity, PrimaryGeneratedColumn, Timestamp } from "typeorm"
+import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, Timestamp, UpdateDateColumn } from "typeorm"
 
 @ObjectType()
 @Entity()
@@ -9,11 +9,17 @@ export class MasterEntity{
   @Field(type => ID , { nullable : false })
   id:number
 
-  @Column()
+  @CreateDateColumn({
+    type:'timestamp',
+    name:'created_at'
+  })
   @Field(type => String, { nullable : true})
   createdAt: string
 
-  @Column()
+  @UpdateDateColumn({
+    type:'timestamp',
+    name:'updated_at'
+  })
   @Field(type => String, { nullable : true})
   updatedAt: string
     

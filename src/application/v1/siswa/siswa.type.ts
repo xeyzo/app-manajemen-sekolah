@@ -1,6 +1,6 @@
 import { Field, InputType, Int, ObjectType } from "@nestjs/graphql";
 import { IsOptional } from "class-validator";
-import { MasterArgs, MasterPayload } from "src/infrastructure/type/master.type";
+import { MasterArgs } from "src/infrastructure/type/master.type";
 import { Column } from "typeorm";
 
 
@@ -24,7 +24,7 @@ export class SiswaArgs extends MasterArgs{
 }
 
 @InputType()
-export class CreateSiswaPayload extends MasterPayload{
+export class CreateSiswaPayload{
   
   @Field(type => String ,{nullable : false})
   nama: string
@@ -41,7 +41,7 @@ export class CreateSiswaPayload extends MasterPayload{
 }
 
 @InputType()
-export class UpdateSiswaPayload extends MasterPayload{
+export class UpdateSiswaPayload{
   
   @IsOptional()
   @Field(type => String ,{nullable : true})
