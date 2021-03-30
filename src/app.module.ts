@@ -1,12 +1,11 @@
 import { Module } from '@nestjs/common';
 import { ApplicationModule } from './application/application.module';
-import { GraphQLModule } from '@nestjs/graphql'
+import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { PelajaranEntity } from './entities/pelajaran.entity';
 import { SiswaEntity } from './entities/siswa.entity';
 import { KelasEntity } from './entities/kelas.entity';
 import { GuruEntity } from './entities/guru.entity';
-
 
 @Module({
   imports: [
@@ -17,15 +16,13 @@ import { GuruEntity } from './entities/guru.entity';
       username: 'postgres',
       password: 'admin',
       database: 'latihan',
-      entities: [
-        PelajaranEntity, SiswaEntity, KelasEntity, GuruEntity
-      ],
-      synchronize: true
+      entities: [PelajaranEntity, SiswaEntity, KelasEntity, GuruEntity],
+      synchronize: true,
     }),
     GraphQLModule.forRoot({
-      autoSchemaFile : true
+      autoSchemaFile: true,
     }),
-    ApplicationModule
-  ]
+    ApplicationModule,
+  ],
 })
 export class AppModule {}
