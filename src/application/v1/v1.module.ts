@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
 import { PelajaranModule } from './pelajaran/pelajaran.module';
-import { SiswaModule } from './siswa/siswa.module';
 import { KelasModule } from './kelas/kelas.module';
-import { GuruModule } from './guru/guru.module';
+import { UserModule } from './user/user.module';
+
 
 @Module({
-  imports: [PelajaranModule, SiswaModule, KelasModule, GuruModule]
+  imports: [PelajaranModule, KelasModule, UserModule]
 })
 export class V1Module {}

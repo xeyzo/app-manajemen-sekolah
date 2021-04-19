@@ -18,7 +18,7 @@ import { GuruEntity } from './entities/guru.entity';
       password: 'admin',
       database: 'latihan',
       entities: [
-        PelajaranEntity, SiswaEntity, KelasEntity, GuruEntity
+        PelajaranEntity, KelasEntity
       ],
       synchronize: true
     }),
