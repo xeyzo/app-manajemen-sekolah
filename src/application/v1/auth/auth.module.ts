@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import { UserService } from './user.service';
-import { UserResolver } from './user.resolver';
+import { AuthService } from './auth.service';
+import { AuthResolver } from './auth.resolver';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserEntity } from 'src/entities/user.entity';
 
@@ -8,6 +8,6 @@ import { UserEntity } from 'src/entities/user.entity';
   imports:[
     TypeOrmModule.forFeature([UserEntity])
   ],
-  providers: [UserService, UserResolver]
+  providers: [AuthService, AuthResolver]
 })
-export class UserModule {}
+export class AuthModule {}
