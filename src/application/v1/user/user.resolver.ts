@@ -1,5 +1,5 @@
-import { InternalServerErrorException, PayloadTooLargeException } from '@nestjs/common';
-import { Args, Context, Mutation, Resolver } from '@nestjs/graphql';
+import { InternalServerErrorException, PayloadTooLargeException} from '@nestjs/common';
+import { Args, Context, Mutation, Resolver, Query } from '@nestjs/graphql';
 import { UserEntity } from 'src/entities/user.entity';
 import { UserService } from './user.service';
 import { UserPayloadCreate } from './user.type';
@@ -15,6 +15,15 @@ export class UserResolver {
   async signIn(
     @Args('payload') payload : UserPayloadCreate
     ){
+      const password = payload.password
       return await this.userService.create(payload)
     }
+  
+  @Query(returns => UserEntity)
+  async getUser(
+    @Args('id') id : number
+  ){
+    return await this.userService.find(id)
+  }
+  
 }

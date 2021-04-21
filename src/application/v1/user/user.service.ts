@@ -16,4 +16,8 @@ export class UserService {
     return await this.userRepo.save(data)
   }
 
+  public async find(id:number){
+    return await this.userRepo.findOne(id)
+  }
+
 }
