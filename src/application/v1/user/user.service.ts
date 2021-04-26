@@ -25,10 +25,13 @@ export class UserService {
     return await this.userRepo.findOne(id)
   }
 
-  public async findUser(username : string){
-  
-    return await this.userRepo.findOne(username)
-  }
+  public async findUsernName(username : string){
+    const user = await this.userRepo.findOne({
+      userName : username
+    });
+
+    return user;
+  } 
 
   public async hashPassword(password:string){
     const salt = bcrypt.genSaltSync(10);

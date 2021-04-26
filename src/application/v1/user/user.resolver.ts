@@ -22,13 +22,10 @@ export class UserResolver {
     @Args('payload') payload : UserPayloadCreate,
     @Context('user') user : UserEntity
   ){
-      // let username = await this.userRepo.findOne(payload.userName)
-      // isCanGetData(username, "username", payload.userName)
-      // console.log(username)       
-      
-      // if (payload.userName == user.userName) {
-      //   badRequestError("username sudah digunakan")
-      // }
+   
+      if(await this.userService.findUsernName(payload.userName)){
+        badRequestError("username sudah digunakan")
+      }
 
       const dPassword = payload.password
       const hashPassword = await this.userService.hashPassword(dPassword)
