@@ -1,7 +1,6 @@
 import { BadRequestException, InternalServerErrorException, PayloadTooLargeException} from '@nestjs/common';
 import { Args, Context, Mutation, Resolver, Query } from '@nestjs/graphql';
 import { InjectRepository } from '@nestjs/typeorm';
-import { userInfo } from 'node:os';
 import { UserEntity } from 'src/entities/user.entity';
 import { isCanGetData } from 'src/infrastructure/utils/check-arg';
 import { badRequestError } from 'src/infrastructure/utils/exception';
@@ -19,9 +18,8 @@ export class UserResolver {
 
   @Mutation(returns => UserEntity)
   async signIn(
-    @Args('payload') payload : UserPayloadCreate,
-    @Context('user') user : UserEntity
-  ){
+    @Args('payload') payload : UserPayloadCreate
+    ){
    
       if(await this.userService.findUsernName(payload.userName)){
         badRequestError("username sudah digunakan")
