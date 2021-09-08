@@ -17,7 +17,7 @@ export class UserResolver {
   ){}
 
   @Mutation(returns => UserEntity)
-  async signIn(
+  async registerUser(
     @Args('payload') payload : UserPayloadCreate
     ){
    
@@ -31,11 +31,5 @@ export class UserResolver {
       return await this.userService.create(payload,hashPassword)
     }
   
-  @Query(returns => UserEntity)
-  async getUser(
-    @Args('id') id : number
-  ){
-    return await this.userService.read(id)
-  }
   
 }
