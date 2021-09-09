@@ -4,7 +4,7 @@ import { UserEntity } from 'src/entities/user.entity';
 import { Repository } from 'typeorm';
 import { UserPayloadCreate } from './user.type';
 import * as bcrypt from 'bcrypt';
-
+import { badRequestError } from 'src/infrastructure/utils/exception';
 
 @Injectable()
 export class UserService {
@@ -13,7 +13,7 @@ export class UserService {
   ){}
 
   public async create(payload : UserPayloadCreate, password:string){
-    const data = await this.userRepo.create({
+    const data = this.userRepo.create({
       ...payload,
       password,
     })
