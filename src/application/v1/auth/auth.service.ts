@@ -19,6 +19,7 @@ export class AuthService {
     return this.userRepo.save(data)
   }
 
+  
   public async createToken(payload: LoginPayload){
     return jwt.sign(payload, 'secret')    
   } 
