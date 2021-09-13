@@ -11,7 +11,7 @@ export class  AuthGuard implements CanActivate {
       return false
     }
     ctx.user = await this.validateToken(ctx.headers.authorization)
-    return true     
+    return true
   }
 
   async validateToken (auth: string){
