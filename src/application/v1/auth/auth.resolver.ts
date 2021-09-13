@@ -1,7 +1,7 @@
 import { Args, Mutation, Resolver } from '@nestjs/graphql';
 import e from 'express';
 import { UserEntity } from 'src/entities/user.entity';
-import { badRequestError } from 'src/infrastructure/utils/exception';
+import { badRequestError, succesRequest } from 'src/infrastructure/utils/exception';
 import { UserService } from '../user/user.service';
 import { AuthService } from './auth.service';
 import { LoginPayload } from './auth.type';
@@ -21,11 +21,10 @@ export class AuthResolver {
     let user = await this.userService.findUsernName(loginPayload.userName)
 
     if(user!){
-        user = await this.authService.createUser(loginPayload)
+      return this.authService.createToken(user)
     }else{
-        badRequestError('akun yang anda masukan belum terdaftar')
+      badRequestError('akun yang anda masukan belum terdaftar')
     }
 
-    return this.authService.createToken(user)
   }
 }
