@@ -1,0 +1,82 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type PelajaranEntity {
+  id: ID!
+  createdAt: String
+  updatedAt: String
+  name: String!
+}
+
+type KelasEntity {
+  id: ID!
+  createdAt: String
+  updatedAt: String
+  namaKelas: String!
+  ketuaKelas: String!
+  waliKelas: String!
+  jumlahSiswa: Int!
+}
+
+type UserEntity {
+  id: ID!
+  createdAt: String
+  updatedAt: String
+  userName: String!
+  password: String!
+  email: String
+}
+
+type Query {
+  getAllPelajaran: [PelajaranEntity!]!
+  getPelajaran(id: Float!): PelajaranEntity!
+  deletePelajaran(id: Float!): Boolean!
+  getKelas(id: Float!): KelasEntity!
+  getAllKelas: [KelasEntity!]!
+  profilUser(id: Float!): UserEntity!
+}
+
+type Mutation {
+  createPelajaran(payload: CreatePelajaranPayload!): PelajaranEntity!
+  updatePelajaran(payload: UpdatePelajaranPayload!, id: Float!): PelajaranEntity!
+  createKelas(payload: KelasPayload!): KelasEntity!
+  updateKelas(payload: UpdateKelasPayload!, id: Float!): KelasEntity!
+  deleteKelas(id: Float!): Boolean!
+  registerUser(payload: UserPayloadCreate!): UserEntity!
+  loginUser(loginPayload: LoginPayload!): String!
+}
+
+input CreatePelajaranPayload {
+  name: String!
+}
+
+input UpdatePelajaranPayload {
+  name: String
+}
+
+input KelasPayload {
+  namaKelas: String!
+  ketuaKelas: String!
+  waliKelas: String!
+  jumlahSiswa: Int!
+}
+
+input UpdateKelasPayload {
+  namaKelas: String
+  ketuaKelas: String
+  waliKelas: String
+  jumlahSiswa: Int
+}
+
+input UserPayloadCreate {
+  userName: String!
+  password: String!
+  email: String!
+}
+
+input LoginPayload {
+  userName: String!
+  password: String!
+  email: String
+}

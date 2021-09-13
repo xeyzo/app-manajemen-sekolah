@@ -41,4 +41,8 @@ export class UserService {
     return hash
   }
 
+  public async findUser(id: number){
+    return this.userRepo.findOne(id)
+  }
+
 }

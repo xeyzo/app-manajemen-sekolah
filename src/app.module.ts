@@ -5,6 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { PelajaranEntity } from './entities/pelajaran.entity';
 import { KelasEntity } from './entities/kelas.entity';
 import { UserEntity } from './entities/user.entity';
+import { join } from 'path';
 
 
 
@@ -23,7 +24,8 @@ import { UserEntity } from './entities/user.entity';
       synchronize: true
     }),
     GraphQLModule.forRoot({
-      autoSchemaFile : true
+      autoSchemaFile: join(process.cwd(), 'src/resources/schema.gql'),
+      context: ({ req }) => ({ headers: req.headers}),     
     }),
     ApplicationModule
   ]

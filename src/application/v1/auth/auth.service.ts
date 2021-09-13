@@ -20,8 +20,8 @@ export class AuthService {
   }
 
   
-  public async createToken(payload: LoginPayload){
-    return jwt.sign(payload, 'secret')    
+  public async createToken({userName, password, email  }: UserEntity){
+    return jwt.sign({userName, password, email}, 'secret')    
   } 
 
 }
